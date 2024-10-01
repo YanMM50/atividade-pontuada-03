@@ -24,39 +24,75 @@ os.system("cls || clear")
 
 from dataclasses import dataclass
 
+
 @dataclass
 class Cliente:
     quantidade_de_filhos = int
     salario = float
 
+def menu ():
+    print("""
+    MENU
+
+1. Adicionar família          
+2. Exibir os resultados          
+3. Sair             
+          """)
+    
 
 
-def coletando_dados():
-    quantidade_filhos = []
-    salario = []
+def opcoes():
+    menu()
+    opcao = (input(""))
+    lista_total = []
+    contador = 0
     while True:
-        filhos = Cliente(
-            qnt_filhos = int(input("Quantos filhos você tem: "))
-
-        )
-        salarios = Cliente(
+        
+        match opcao:
+            case "1":
+                cliente = Cliente(
+            qnt_filhos = int(input("Quantos filhos você tem: ")),
             salarios = float(input("Seu salário: "))
-
-            )
-        quantidade_filhos.append(filhos)
-        salario.append(salarios)
-
-        continuar = input("deseja continuar: ").strip().lower().upper()
-        if continuar == "sim":
-            continue
-        elif continuar == "não":
-            break
+        )
+                lista_total.append(cliente)
+                contador += 1
+            case "2":
+                
+                
+            case "3":
+                break
+                
+            case _:
+                print("Opção inválida")
+                continue
+            
+    return lista_total, contador
 
         
-    return quantidade_filhos, salario
 
 
-qnt_filhos_lista, salario_lista = coletando_dados()
+
+lista_total, contador = opcoes()
+
+
+def lendo_e_mostrando_arquivo():
+    nome_arquivo_cliente = "pesquisa_prefeitura.txt"
+    with open(nome_arquivo_cliente, "w") as lista_clientes:
+        for cliente in lista_total:
+            lista_clientes.write(f"{cliente.qnt_filhos}, {cliente.salarios}\n")
+        
+    with open(nome_arquivo_cliente, "r") as arquivo_clientes:
+        for linha in arquivo_clientes:
+            nome, sobrenome, idade, peso, altura = linha.strip() .split(",")
+            lista_total.append(Cliente(nome=nome, sobrenome= sobrenome, idade = int(idade), peso = float(peso), altura = float(altura)))
+
+        lista_clientes.close()
+        
+    return lista_clientes, arquivo_clientes
+
+
+ 
+
 
 
     

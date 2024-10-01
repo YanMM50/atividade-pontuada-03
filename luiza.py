@@ -100,6 +100,7 @@ def opcoes(n1):
 
     while True:
         menu()
+        
         opcao = input("Digite a sua opção: ")
         
         match opcao:
