@@ -63,11 +63,11 @@ def coletando_dados():
     quantidade_filhos = []
     salario = []
     while True:
-        filhos = Cliente(
+        filhos = Familia(
             qnt_filhos = int(input("Quantos filhos você tem: "))
 
         )
-        salarios = Cliente(
+        salarios = Familia(
             salarios = float(input("Seu salário: "))
 
             )
@@ -124,7 +124,7 @@ print("\n=== Acessando dados de um arquivo ===")
 with open(nome_do_arquivo, "w") as arquivo_da_prefeitura:
     for linha in arquivo_da_prefeitura:
         quantidade_filhos, salario = linha.strip().split(",")
-        lista_de_alunos.append(Aluno(nome=nome, idade= int(idade)))
+        lista_de_alunos.append(Familia(quantidade_filhos = int(quantidade_filhos), salario = float(input(salario))))
 
 
 
