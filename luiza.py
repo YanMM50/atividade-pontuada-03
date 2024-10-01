@@ -25,7 +25,7 @@ os.system("cls || clear")
 from dataclasses import dataclass
 
 @dataclass
-class Cliente:
+class Familia:
     quantidade_de_filhos = int
     salario = float
 
@@ -35,11 +35,11 @@ def coletando_dados():
     quantidade_filhos = []
     salario = []
     while True:
-        filhos = Cliente(
+        filhos = Familia(
             qnt_filhos = int(input("Quantos filhos você tem: "))
 
         )
-        salarios = Cliente(
+        salarios = Familia(
             salarios = float(input("Seu salário: "))
 
             )
@@ -87,11 +87,12 @@ def coletando_dados():
 qnt_filhos_lista, salario_lista = coletando_dados()
 def menu ():
     print("""
-    MENU
+    
+código | descrição
 
-1. Adicionar família          
-2. Exibir os resultados          
-3. Sair             
+1.       Adicionar família          
+2.       Exibir os resultados          
+3.       Sair             
           """)
     
 def opcoes(n1):
@@ -109,8 +110,8 @@ def opcoes(n1):
             case "3":
                 n1.append("Sair")
             case _:
-                resultado = "Opção inválida"
-                return n1,resultado
+                print("Opção inválida")
+                continue
 
 
 
@@ -124,3 +125,12 @@ with open(nome_do_arquivo, "w") as arquivo_da_prefeitura:
     for linha in arquivo_da_prefeitura:
         quantidade_filhos, salario = linha.strip().split(",")
         lista_de_alunos.append(Aluno(nome=nome, idade= int(idade)))
+
+
+
+print("\n==== Resultados ====")
+print("Total de famílias: {total_familias}")
+print("Média do salário: {media_salario}")
+print("Média do número de filhos: {media_filhos}")
+print("Maior Salário: {maior_salario}")
+print("Menor Salário: {menor_salario}")
