@@ -29,30 +29,62 @@ class Cliente:
     quantidade_de_filhos = int
     salario = float
 
-mport os
-os.system("cls || clear")
 
-from dataclasses import dataclass
-
-@dataclass
-class Cliente:
-    quantidade_de_filhos = int
-    salario = float
 
 def coletando_dados():
     quantidade_filhos = []
     salario = []
     while True:
-        cliente = Cliente(
+        filhos = Cliente(
             qnt_filhos = int(input("Quantos filhos você tem: "))
-            salario = float(input("Seu salário: "))
+
         )
-        quantidade_filhos.append()
+        salarios = Cliente(
+            salarios = float(input("Seu salário: "))
+
+            )
+        quantidade_filhos.append(filhos)
+        salario.append(salarios)
+
+        continuar = input("deseja continuar: ").strip().lower().upper()
+        if continuar == "sim":
+            continue
+        elif continuar == "não":
+            break
+
+        
     return quantidade_filhos, salario
 
-lista_atualizada_clientes, cliente = coletando_dados()
-        
 
+qnt_filhos_lista, salario_lista = coletando_dados()
+
+
+def coletando_dados():
+    quantidade_filhos = []
+    salario = []
+    while True:
+        filhos = Cliente(
+            qnt_filhos = int(input("Quantos filhos você tem: "))
+
+        )
+        salarios = Cliente(
+            salarios = float(input("Seu salário: "))
+
+            )
+        quantidade_filhos.append(filhos)
+        salario.append(salarios)
+
+        continuar = input("deseja continuar: ").strip().lower().upper()
+        if continuar == "sim":
+            continue
+        elif continuar == "não":
+            break
+
+        
+    return quantidade_filhos, salario
+
+
+qnt_filhos_lista, salario_lista = coletando_dados()
 def menu ():
     print("""
     MENU
@@ -83,10 +115,12 @@ def opcoes(n1):
 
 
 #  Definindo o nome do arquivo
+nome_do_arquivo = "pesquisa_prefeitura.txt"
 
+# Abrindo arquivo e definindo que será feita a escrita de dados.
 
-    print("\n=== Acessando dados de um arquivo ===")
-with open(nome_do_arquivo, "r") as arquivo_de_origem:
-    for linha in arquivo_de_origem:
-        nome, idade = linha.strip().split(",")
+print("\n=== Acessando dados de um arquivo ===")
+with open(nome_do_arquivo, "w") as arquivo_da_prefeitura:
+    for linha in arquivo_da_prefeitura:
+        quantidade_filhos, salario = linha.strip().split(",")
         lista_de_alunos.append(Aluno(nome=nome, idade= int(idade)))
