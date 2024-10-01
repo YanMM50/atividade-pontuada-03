@@ -73,7 +73,10 @@ def opcoes():
                 continue
             
         menu()
-        opcao
+        opcao2 = input("Resposta: ")
+
+        
+
 
     return lista_total, contador
 
