@@ -32,7 +32,7 @@ class Cliente:
 
 def menu ():
     print("""
-    MENU
+   === MENU ===
 
 1. Adicionar família          
 2. Exibir os resultados          
@@ -43,7 +43,7 @@ def menu ():
 
 def opcoes():
     menu()
-    opcao = (input(""))
+    opcao = (input("Resposta: "))
     lista_total = []
     contador = 0
     while True:
@@ -57,7 +57,13 @@ def opcoes():
                 lista_total.append(cliente)
                 contador += 1
             case "2":
-                
+                print("\n==== Resultados ====")
+                print(f"Total de famílias: {total_familias}")
+                print(f"Média do salário: {media_salario}")
+                print(f"Média do número de filhos: {media_filhos}")
+                print(f"Maior Salário: {maior_salario}")
+                print(f"Menor Salário: {menor_salario}")
+                                
                 
             case "3":
                 break
@@ -66,6 +72,9 @@ def opcoes():
                 print("Opção inválida")
                 continue
             
+        menu()
+        opcao
+
     return lista_total, contador
 
         
@@ -83,8 +92,8 @@ def lendo_e_mostrando_arquivo():
         
     with open(nome_arquivo_cliente, "r") as arquivo_clientes:
         for linha in arquivo_clientes:
-            nome, sobrenome, idade, peso, altura = linha.strip() .split(",")
-            lista_total.append(Cliente(nome=nome, sobrenome= sobrenome, idade = int(idade), peso = float(peso), altura = float(altura)))
+            qnt_filhos, salarios = linha.strip() .split(",")
+            lista_total.append(Cliente(qnt_filhos=int(qnt_filhos), salarios=float(salarios)))
 
         lista_clientes.close()
         
