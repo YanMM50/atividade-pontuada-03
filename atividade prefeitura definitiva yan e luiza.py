@@ -16,7 +16,12 @@ código | descrição
 Ao adicionar uma família, deve-se limpar o terminal e apresentar o menu novamente.
 1. Salve os dados em um arquivo com nome: pesquisa_prefeitura.txt
 2. O programa deve ler o arquivo para exibir os dados salvos.  
+"""
 
+""""
+Membros:
+1. Yan
+2. Maria Luiza
 """
 
 import os
@@ -29,6 +34,12 @@ from dataclasses import dataclass
 class Cliente:
     quantidade_de_filhos : int
     salario : float
+   
+@dataclass
+class Final:
+    lista_final: list
+
+
 
 def menu ():
     print("""
@@ -45,14 +56,23 @@ def criando_arquivo(a,b):
     with open(a, "a") as lista_clientes:
         for cliente in b:
             lista_clientes.write(f"{cliente.quantidade_de_filhos}, {cliente.salario}\n")
+        lista_clientes.close()
 
+def criando_arquivo_final(a,b):
+    with open(a, "w") as lista_clientes:
+        for cliente in b:
+            lista_clientes.write(f"{cliente}, \n")
+        lista_clientes.close()
 
 def lendo_arquivo(a):
     with open(a, "r") as arquivo_clientes:
         for linha in arquivo_clientes:
             quantidade_de_filhos, salario = linha.strip() .split(",")
             lista_total.append(Cliente(quantidade_de_filhos=int(quantidade_de_filhos), salario=float(salario)))
+        arquivo_clientes.close()
+
     return lista_total
+
 
 
 
@@ -71,7 +91,7 @@ lista_total = []
 def limpar_tela():
     os.system("cls || clear ")
 
-contador = 0
+
 while True: 
     menu()
     opcao = (input("Resposta: "))
@@ -82,12 +102,14 @@ while True:
             salario = float(input("Seu salário: "))
             )
             lista_total.append(cliente)
-            nome_arquivo_cliente = "pesquisa_prefeitura.txt"
+            nome_arquivo_cliente = "dados.txt"
             criando_arquivo(nome_arquivo_cliente, lista_total)
+            limpar_tela()
             
         case "2":
+            limpar_tela()
             contador = 0
-            nome_arquivo_cliente = "pesquisa_prefeitura.txt"
+            nome_arquivo_cliente = "dados.txt"
             lista_salario=[]
             lista_filhos = []
             lista_total_definitiva = lendo_arquivo(nome_arquivo_cliente)
@@ -98,7 +120,15 @@ while True:
             media_salario = media_total(lista_salario)
             media_filhos = media_total(lista_filhos)
             maior_salario = max(lista_salario)
-            menor_salario = min(lista_salario) 
+            menor_salario = min(lista_salario)
+            lista_final = []
+            lista_final.append(contador) 
+            lista_final.append(media_salario) 
+            lista_final.append(media_filhos) 
+            lista_final.append(maior_salario) 
+            lista_final.append(menor_salario) 
+            nome_arquivo = "pesquisa_prefeitura.txt"
+            criando_arquivo_final(nome_arquivo, lista_final)
             print("\n==== Resultados ====")
             print(f"Total de famílias: {contador}")
             print(f"Média do salário: {media_salario}")
