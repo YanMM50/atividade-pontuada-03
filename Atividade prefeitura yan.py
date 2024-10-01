@@ -28,4 +28,17 @@ from dataclasses import dataclass
 class Cliente:
     quantidade_de_filhos = int
     salario = float
+
+def coletando_dados():
+    quantidade_filhos = []
+    salario = []
+    while True:
+        cliente = Cliente(
+            qnt_filhos = int(input("Quantos filhos você tem: "))
+            salario = float(input("Seu salário: "))
+        )
+        quantidade_filhos.append()
+    return lista_de_alunos, cliente
+
+lista_atualizada_clientes, cliente = coletando_dados()
     
