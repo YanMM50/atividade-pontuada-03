@@ -29,16 +29,34 @@ class Cliente:
     quantidade_de_filhos = int
     salario = float
 
+
+
 def coletando_dados():
     quantidade_filhos = []
     salario = []
     while True:
-        cliente = Cliente(
+        filhos = Cliente(
             qnt_filhos = int(input("Quantos filhos você tem: "))
-            salario = float(input("Seu salário: "))
-        )
-        quantidade_filhos.append()
-    return lista_de_alunos, cliente
 
-lista_atualizada_clientes, cliente = coletando_dados()
+        )
+        salarios = Cliente(
+            salarios = float(input("Seu salário: "))
+
+            )
+        quantidade_filhos.append(filhos)
+        salario.append(salarios)
+
+        continuar = input("deseja continuar: ").strip().lower().upper()
+        if continuar == "sim":
+            continue
+        elif continuar == "não":
+            break
+
+        
+    return quantidade_filhos, salario
+
+
+qnt_filhos_lista, salario_lista = coletando_dados()
+
+
     
